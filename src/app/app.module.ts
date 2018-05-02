@@ -8,6 +8,7 @@ import { Store } from '../store';
 
 // features
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 export const ROUTES: Routes = [];
 
@@ -18,7 +19,8 @@ export const ROUTES: Routes = [];
     imports: [
         BrowserModule,
         RouterModule.forRoot(ROUTES),
-        AuthModule
+        AuthModule,
+        SharedModule
     ],
     providers: [
         Store

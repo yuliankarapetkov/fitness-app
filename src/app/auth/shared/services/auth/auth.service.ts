@@ -40,4 +40,8 @@ export class AuthService {
     loginUser(email: string, password: string) {
         return this.angularFire.auth.signInWithEmailAndPassword(email, password);
     }
+
+    logoutUser() {
+        return this.angularFire.auth.signOut();
+    }
 }

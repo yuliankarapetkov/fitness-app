@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Store } from '../store';
 import { AuthService, User } from './auth/shared/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -17,9 +18,15 @@ export class AppComponent implements OnInit, OnDestroy {
     private userSubscription: Subscription;
 
     constructor(
-       private store: Store,
-       private authService: AuthService
+        private router: Router,
+        private store: Store,
+        private authService: AuthService
     ) {}
+
+    async handleOnLogout() {
+        await this.authService.logoutUser();
+        this.router.navigate(['/auth/login']);
+    }
 
     ngOnInit() {
         this.userSubscription = this.authService.auth$.subscribe();
