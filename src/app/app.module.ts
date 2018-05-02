@@ -11,7 +11,9 @@ import { AuthModule } from './auth/auth.module';
 import { HealthModule } from './health/health.module';
 import { SharedModule } from './shared/shared.module';
 
-export const ROUTES: Routes = [];
+export const ROUTES: Routes = [
+    { path: '', pathMatch: 'full', redirectTo: 'schedule' }
+];
 
 @NgModule({
     declarations: [
