@@ -1,6 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+      "paths": {
+          "store": ["src/store.ts"]
+      },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
+import { Store } from '../store';
+
 // features
 import { AuthModule } from './auth/auth.module';
 
@@ -18,7 +20,9 @@ export const ROUTES: Routes = [];
         RouterModule.forRoot(ROUTES),
         AuthModule
     ],
-    providers: [],
+    providers: [
+        Store
+    ],
     bootstrap: [
         AppComponent
     ]
