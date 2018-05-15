@@ -18,7 +18,8 @@
         </div>
         <health-list-item
             *ngFor="let meal of meals"
-            [item]="meal">
+            [item]="meal"
+            (onRemove)="handleOnRemoveMeal($event)">
         </health-list-item>
     </div>
     <ng-template #loading>

@@ -21,11 +21,15 @@ export class MealsComponent implements OnInit, OnDestroy {
         private mealsService: MealsService
     ) { }
 
+    handleOnRemoveMeal(event: any) {
+        this.mealsService.removeMeal(event.$key);
+    }
+
     ngOnInit() {
         this.meals$ = this.store.select<Meal[]>('meals');
         this.mealsService.meals$
             .takeWhile(() => this.componentAlive)
-            .subscribe();
+            .subscribe(() => console.log(this.meals$));
     }
 
     ngOnDestroy() {
