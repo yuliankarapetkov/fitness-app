@@ -29,7 +29,7 @@ export class MealsComponent implements OnInit, OnDestroy {
         this.meals$ = this.store.select<Meal[]>('meals');
         this.mealsService.meals$
             .takeWhile(() => this.componentAlive)
-            .subscribe(() => console.log(this.meals$));
+            .subscribe();
     }
 
     ngOnDestroy() {
