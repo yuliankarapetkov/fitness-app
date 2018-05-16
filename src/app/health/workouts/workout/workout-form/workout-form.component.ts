@@ -24,7 +24,16 @@ export class WorkoutFormComponent implements OnInit, OnChanges {
 
     form = this.formBuilder.group( {
         name: ['', Validators.required],
-        type: 'strength'
+        type: 'strength',
+        strength: this.formBuilder.group({
+            reps: 0,
+            sets: 0,
+            weight: 0
+        }),
+        endurance: this.formBuilder.group({
+            distance: 0,
+            duration: 0
+        })
     });
 
     constructor(
@@ -39,20 +48,13 @@ export class WorkoutFormComponent implements OnInit, OnChanges {
         return this.form.get('name').hasError('required') && this.form.get('name').touched;
     }
 
-    // private emptyIngredients() {
-    //     // Remove all ingredients
-    //     while (this.ingredients.controls.length) {
-    //         this.ingredients.removeAt(0);
-    //     }
-    // }
-    //
-    // addIngredient() {
-    //     this.ingredients.push(new FormControl(''));
-    // }
-    //
-    // removeIngredient(index: number) {
-    //     this.ingredients.removeAt(index);
-    // }
+    get workoutType() {
+        return this.form.get('type') as FormControl;
+    }
+
+    get placeholder() {
+        return `e.g. ${this.workoutType.value === 'strength' ? 'Benchpress' : 'Treadmill' }`;
+    }
 
     createWorkout() {
         if (this.form.valid) {
@@ -75,19 +77,11 @@ export class WorkoutFormComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(change: SimpleChanges) {
-        // if (this.workout && this.workout.name) {
-        //     this.exists = true;
-        //     this.emptyIngredients();
-        //
-        //     const value = this.workout;
-        //     this.form.patchValue(value);
-        //
-        //     if (value.ingredients) {
-        //         for (const item of value.ingredients) {
-        //             this.ingredients.push(new FormControl(item))
-        //         }
-        //     }
-        // }
+        if (this.workout && this.workout.name) {
+            this.exists = true;
+            const value = this.workout;
+            this.form.patchValue(value);
+        }
     }
 
     ngOnInit() {

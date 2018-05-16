@@ -1,7 +1,17 @@
 <div class="list-item">
     <a [routerLink]="getRoute(item)">
+
         <p class="list-item__name">{{ item.name }}</p>
-        <p class="list-item__ingredients"><span>{{ item.ingredients }}</span></p>
+
+        <p class="list-item__ingredients" *ngIf="item.ingredients; else showWorkout">
+            <span>{{ item.ingredients | join }}</span>
+        </p>
+        <ng-template #showWorkout>
+            <p class="list-item__workout">
+                <span>{{ item | workout }}</span>
+            </p>
+        </ng-template>
+
     </a>
     <div class="list-item__delete" *ngIf="toggled">
         <p>Delete item?</p>

@@ -16,8 +16,9 @@ export class ListItemComponent implements OnInit {
     constructor() { }
 
     getRoute(item: any) {
-        console.log('item', item);
-        return ['../meals', item.$key];
+        return [
+            `../${ item.ingredients ? 'meals' : 'workouts' }`,
+            item.$key];
     }
 
     toggle() {
