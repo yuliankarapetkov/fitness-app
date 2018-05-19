@@ -7,6 +7,10 @@ import { ScheduleComponent } from './schedule.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ControlsComponent } from './calendar/controls/controls.component';
 import { DaysComponent } from './calendar/days/days.component';
+import { SectionComponent } from './calendar/section/section.component';
+import { SharedModule } from '../shared/shared.module';
+import { AssignComponent } from './assign/assign.component';
+
 
 export const ROUTES: Routes = [
     { path: '', component: ScheduleComponent }
@@ -17,12 +21,15 @@ export const ROUTES: Routes = [
         ScheduleComponent,
         CalendarComponent,
         ControlsComponent,
-        DaysComponent
+        DaysComponent,
+        SectionComponent,
+        AssignComponent
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule.forChild(ROUTES)
+        RouterModule.forChild(ROUTES),
+        SharedModule
     ]
 })
 export class ScheduleModule { }

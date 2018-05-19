@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ScheduleItem, ScheduleList } from '../../shared/services/schedule/schedule.service';
 
 @Component({
     selector: 'health-schedule-calendar',
@@ -10,11 +11,21 @@ export class CalendarComponent implements OnInit, OnChanges {
         this.selectedDay = new Date(date.getTime());
     }
 
+    @Input() items: ScheduleList;
+
     @Output() onChange: EventEmitter<Date> = new EventEmitter<Date>();
+    @Output() onSelect: EventEmitter<any> = new EventEmitter<any>();
 
     selectedDayIndex: number;
     selectedDay: Date;
     selectedWeek: Date;
+
+    sections = [
+        { key: 'morning', name: 'Morning' },
+        { key: 'lunch', name: 'Lunch' },
+        { key: 'evening', name: 'Evening' },
+        { key: 'snacks', name: 'Snacks and Drinks   ' }
+    ];
 
     constructor() { }
 
@@ -32,6 +43,10 @@ export class CalendarComponent implements OnInit, OnChanges {
         return today;
     }
 
+    getSection(name: string): ScheduleItem {
+        return this.items && this.items[name] || {};
+    }
+
     handleOnMove(offset: number) {
         const startOfWeek = this.getStartOfWeek(new Date());
         const startDate = new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate());
@@ -45,6 +60,17 @@ export class CalendarComponent implements OnInit, OnChanges {
         const selectedDay = new Date(this.selectedWeek);
         selectedDay.setDate(selectedDay.getDate() + index);
         this.onChange.emit(selectedDay);
+    }
+
+    handleOnSelectSection({ type, assigned, data}: any, section: string) {
+        const day = this.selectedDay;
+        this.onSelect.emit({
+            type,
+            assigned,
+            section,
+            day,
+            data
+        })
     }
 
     ngOnChanges(changes: SimpleChanges) {

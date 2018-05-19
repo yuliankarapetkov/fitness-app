@@ -1,6 +1,16 @@
 <div class="schedule">
     <health-schedule-calendar
         [date]="date$ | async"
-        (onChange)="handleOnChange($event)">
+        [items]="schedule$ | async"
+        (onChange)="handleOnChange($event)"
+        (onSelect)="handleOnSelect($event)">
     </health-schedule-calendar>
+
+    <health-schedule-assign
+        *ngIf="open"
+        [section]="selected$ | async"
+        [list]="list$ | async"
+        (onUpdate)="handleOnAssignUpdate($event)"
+        (onCancel)="handleOnAssignCancel()">
+    </health-schedule-assign>
 </div>

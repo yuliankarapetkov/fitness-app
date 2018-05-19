@@ -8,4 +8,11 @@
         [selected]="selectedDayIndex"
         (onSelectDay)="handleOnSelectDay($event)">
     </health-schedule-days>
+
+    <health-schedule-section
+        *ngFor="let section of sections"
+        [name]="section.name"
+        [section]="getSection(section.key)"
+        (onSelect)="handleOnSelectSection($event, section.key)">
+    </health-schedule-section>
 </div>
