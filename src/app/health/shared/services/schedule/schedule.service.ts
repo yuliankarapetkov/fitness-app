@@ -35,8 +35,8 @@ export interface ScheduleList {
 @Injectable()
 export class ScheduleService {
     private date$: BehaviorSubject<Date> = new BehaviorSubject(new Date());
-    private section$: Subject = new Subject();
-    private itemList$: Subject = new Subject();
+    private section$: Subject<any> = new Subject<any>();
+    private itemList$: Subject<any> = new Subject<any>();
 
     items$ = this.itemList$
         .withLatestFrom(this.section$)

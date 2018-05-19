@@ -9,7 +9,7 @@ export const TYPE_CONTROL_ACCESSOR = {
 
 @Component({
     selector: 'health-workout-type',
-    providers: [TYPE_CONTROL_ACCESSOR]
+    providers: [TYPE_CONTROL_ACCESSOR],
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './workout-type.component.html',
     styleUrls: ['./workout-type.component.scss']
