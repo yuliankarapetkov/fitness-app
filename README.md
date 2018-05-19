@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
+## Demo
+
+Have a look at the demo on [Firebase](https://fitness-app-f93dd.firebaseapp.com)!
+
+## Summary
+
+This project is an implementation of Todd Motto's [Angular Pro](https://ultimateangular.com/) final work project.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
