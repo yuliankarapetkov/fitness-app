@@ -1,3 +1,6 @@
-<p>
-  schedule works!
-</p>
+<div class="schedule">
+    <health-schedule-calendar
+        [date]="date$ | async"
+        (onChange)="handleOnChange($event)">
+    </health-schedule-calendar>
+</div>

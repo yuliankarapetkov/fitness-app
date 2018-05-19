@@ -1,0 +1,11 @@
+<div class="calendar">
+    <health-schedule-controls
+        [selected]="selectedDay"
+        (onMove)="handleOnMove($event)">
+    </health-schedule-controls>
+
+    <health-schedule-days
+        [selected]="selectedDayIndex"
+        (onSelectDay)="handleOnSelectDay($event)">
+    </health-schedule-days>
+</div>
